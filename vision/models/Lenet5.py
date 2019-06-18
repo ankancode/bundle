@@ -4,7 +4,7 @@ Paper: http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf
 
 """
 import torch.nn as nn
-from Vision.utility import operate
+from bundle.vision.utility import operate
 
 __all__ = ['model', 'train', 'test']
 
