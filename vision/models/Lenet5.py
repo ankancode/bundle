@@ -6,7 +6,7 @@ Paper: http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf
 import torch.nn as nn
 from bundle.vision.utility import operate
 
-__all__ = ['model', 'train', 'test']
+__all__ = ['model', 'train', 'pred']
 
 class Lenet5(nn.module):
 
@@ -51,23 +51,23 @@ class Lenet5(nn.module):
 		return nn.Sequential(*layers)
 
 
-	def model(self, pretrained=False, init_weights=True):
-		cfg = [6, 'A', 16, 'A']
-		self.pretrain_flag = pretrained
-		if pretrained:
-			init_weights = False
-		self.net = Lenet5(self.make_layers(cfg), init_weights)
-		if pretrained:
-			state_dict = load_state_dict_from_url(model_urls[lenet5], progress=True)
-			self.net.load_state_dict(state_dict)
-		return self.net
+def model(self, pretrained=False, init_weights=True):
+	cfg = [6, 'A', 16, 'A']
+	self.pretrain_flag = pretrained
+	if pretrained:
+		init_weights = False
+	self.net = Lenet5(self.make_layers(cfg), init_weights)
+	if pretrained:
+		state_dict = load_state_dict_from_url(model_urls[lenet5], progress=True)
+		self.net.load_state_dict(state_dict)
+	return self.net
 
-	def train(self, **kwargs):
-		if self.pretrain_flag == False:
-			return operate.model_train(self.net, **kwargs)
-		print("Model is already pretrained !!!")
-		return self.net
+def train(self, **kwargs):
+	if self.pretrain_flag == False:
+		return operate.model_train(self.net, **kwargs)
+	print("Model is already pretrained !!!")
+	return self.net
 
-	def test(self, **kwargs):
-		operate.model_test(self.net, **kwargs)
-		return
+def pred(self, image):
+	pass
+	return

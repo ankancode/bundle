@@ -33,3 +33,10 @@ class Load_Dataset:
 		dataloader = torch.utils.data.DataLoader(train_data, batch_size=32)
 
 		return dataloader
+
+	def image_loader(image_name):
+		image = Image.open(image_name)
+		image = self.val_test_transforms(image).float()
+		image = torch.tensor(image, requires_grad=True)
+		image = image.unsqueeze(0)
+		return image

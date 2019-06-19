@@ -46,5 +46,3 @@ def model_train(model, **kwargs):
 
 					print("Validation Loss: {:.3f}".format(validation_loss/len(validationloader)),
 							"Accuracy: {:.3f}".format(accuracy/len(validationloader)))
-
-def model_test(model, **kwargs):
