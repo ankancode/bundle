@@ -9,17 +9,17 @@ class Load_Dataset:
 	def __init__(self, path):
 
 		self.train_transforms = transforms.Compose([transforms.Resize(32),
-													transforms.RandomRotation(30),
-													transforms.RandomHorizontalFlip(),
-													transforms.ToTensor(),
-													transforms.Normalize([0.5, 0.5, 0.5],
-																		[0.5, 0.5, 0.5])])
+			transforms.RandomRotation(30),
+			transforms.RandomHorizontalFlip(),
+			transforms.ToTensor(),
+			transforms.Normalize([0.5, 0.5, 0.5],[0.5, 0.5, 0.5])
+			])
 
 
 		self.val_test_transforms = transforms.Compose([transforms.Resize(32),
-													transforms.ToTensor(),
-													transforms.Normalize([0.5, 0.5, 0.5],
-																		[0.5, 0.5, 0.5])])	
+			transforms.ToTensor(),
+			transforms.Normalize([0.5, 0.5, 0.5],[0.5, 0.5, 0.5])
+			])	
 
 	def find_classes(self, path):
 	    classes = os.listdir(path)
