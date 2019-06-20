@@ -68,6 +68,8 @@ def train(self, **kwargs):
 	print("Model is already pretrained !!!")
 	return self.net
 
-def pred(self, image):
-	pass
-	return
+def pred(self, image, class_to_idx):
+	lg_out = model(image)
+	out = torch.exp(lg_out)
+	prediction = class_to_idx[out.max(1)]
+	return prediction
